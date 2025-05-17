@@ -11,14 +11,14 @@
       "login": "alex",
       "password": "qwe123",
       "registed_at": "1996-04-21 00:25",
-      "role_id": 2,
+      "role_id": 1,
       "id": "7nP1c0c"
     },
     {
       "login": "ivan",
       "password": "qqq123",
       "registed_at": "1994-07-01 17:34",
-      "role_id": 2,
+      "role_id": 1,
       "id": "7hdHYYR"
     },
     {
@@ -27,27 +27,6 @@
       "registed_at": "1972-03-03 04:02",
       "role_id": 2,
       "id": "lwmdllD"
-    },
-    {
-      "login": "ivan3",
-      "password": "qqq111",
-      "registed_at": "1975-07-19 08:38",
-      "role_id": 2,
-      "id": "rmtpW0m"
-    },
-    {
-      "login": "lex",
-      "password": "qqq111",
-      "registed_at": "1994-05-08 18:49",
-      "role_id": 2,
-      "id": "GcDqR88"
-    },
-    {
-      "login": "mix",
-      "password": "qwerty123",
-      "registed_at": "1999-10-18 05:27",
-      "role_id": 2,
-      "id": "c7dIH27"
     }
   ],
   "roles": [

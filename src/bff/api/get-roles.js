@@ -1,13 +1,6 @@
-// export const getUsers = () => {
-// 	fetch('http://localhost:3001/users').then((loadedUsers) => {
-// 		loadedUsers.json();
-// 	});
-// };
-
-
-export const getUsers = async () => {
+export const getRoles = async () => {
 	try {
-		const res = await fetch('http://localhost:3001/users');
+		const res = await fetch('http://localhost:3001/roles');
 		if (!res.ok) throw new Error('Ошибка ответа сервера');
 		const data = await res.json();
 		return data;
