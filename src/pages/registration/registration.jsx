@@ -5,13 +5,13 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { server } from '../../bff';
 import { useState } from 'react';
-import styled from 'styled-components';
 import { Input, Button, H2, AuthFormError } from '../../components';
 import { useResetForm } from '../../hooks';
 import { setUser } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../constants';
+import styled from 'styled-components';
 
 const regFormShema = yup.object().shape({
 	login: yup

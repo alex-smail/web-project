@@ -1,5 +1,5 @@
-import { getUser } from "../api";
-import { sessions } from "../sessions";
+import { getUser } from '../api';
+import { sessions } from '../sessions';
 
 // АВТОРИЗАЦИЯ
 export const authorize = async (authLogin, authPassword) => {

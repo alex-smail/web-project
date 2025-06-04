@@ -1,9 +1,11 @@
 const initialPostsState = {};
 
 export const postsReducer = (state = initialPostsState, action) => {
-	switch (action.type) {
+	const { type, payload } = action;
+
+	switch (type) {
 		case 'SET_USER':
-			return action.payload;
+			return payload;
 		default:
 			return state;
 	}
