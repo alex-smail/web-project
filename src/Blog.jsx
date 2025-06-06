@@ -2,6 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
 import { Authorization, Post, Registration, Users } from './pages';
 import styled from 'styled-components';
+import { useLayoutEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser } from './actions';
 
 const AppColumn = styled.div`
 	display: flex;
@@ -17,8 +20,25 @@ const Page = styled.div`
 	padding: 120px 0 20px;
 `;
 
-
 const Blog = () => {
+	// запомнить сессию при входе
+	const dispatch = useDispatch();
+
+	useLayoutEffect(() => {
+		const currentUserDataJSON = sessionStorage.getItem('userData');
+
+		if (!currentUserDataJSON) return;
+
+		const currentUserData = JSON.parse(currentUserDataJSON);
+
+		dispatch(
+			setUser({
+				...currentUserData,
+				roleId: Number(currentUserData.roleId),
+			})
+		);
+	}, [dispatch]);
+	//...
 	return (
 		<AppColumn>
 			<Header />

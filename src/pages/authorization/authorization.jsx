@@ -71,6 +71,8 @@ const AuthorizationContainer = ({ className }) => {
 			}
 
 			dispatch(setUser(res));
+			// запомнить пользователя
+			sessionStorage.setItem('userData', JSON.stringify(res));
 		});
 	};
 

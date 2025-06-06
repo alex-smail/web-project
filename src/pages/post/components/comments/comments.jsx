@@ -15,21 +15,31 @@ const CommentsContainer = ({ className, comments, postId }) => {
 	const requestServer = useServerRequest();
 
 	const onNewCommentAdd = (userId, postId, content) => {
-		dispatch(addCommentAsync(userId, postId, content));
-	}
+		if (!content.trim()) return; // Защита от пустых комментариев
+
+		dispatch(addCommentAsync(requestServer, userId, postId, content));
+		setNewComment('');
+	};
 
 	return (
 		<div className={className}>
 			<div className="new-comment">
 				<textarea
-					name='comment'
+					name="comment"
 					value={newComment}
 					placeholder="Комментарий..."
 					onChange={({ target }) => {
-						target.value === '' ? setNewComment('') : setNewComment(target.value);
+						target.value === ''
+							? setNewComment('')
+							: setNewComment(target.value);
 					}}
 				></textarea>
-				<Icon id="fa-paper-plane-o" margin="0 0 0 10px" size="18px" onClick={() => onNewCommentAdd(requestServer, userId, postId, newComment)}/>
+				<Icon
+					id="fa-paper-plane-o"
+					margin="0 0 0 10px"
+					size="18px"
+					onClick={() => onNewCommentAdd(userId, postId, newComment)}
+				/>
 			</div>
 
 			<div className="comments">
@@ -49,19 +59,17 @@ const CommentsContainer = ({ className, comments, postId }) => {
 
 export const Comments = styled(CommentsContainer)`
 	width: 580px;
-	display: flex;
 	margin: 0 auto;
 	margin-top: 20px;
 
 	& .new-comment {
 		display: flex;
 		width: 100%;
-
 	}
 
 	& .new-comment textarea {
 		resize: none;
-		width: 100%;
+		width: 550px;
 		height: 120px;
 		font-size: 16px;
 		padding: 10px;

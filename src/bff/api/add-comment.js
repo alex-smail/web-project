@@ -1,5 +1,4 @@
-import { generateDate } from "../utils";
-
+import { generateDate } from '../utils';
 
 export const addComment = (userId, postId, content) =>
 	fetch('http://localhost:3001/comments', {
