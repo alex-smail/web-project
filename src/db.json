@@ -116,27 +116,6 @@
     {
       "author_id": "001",
       "post_id": "001",
-      "published_at": "1974-09-24 12:28",
-      "content": "sfdsfxczvzxvzv",
-      "id": 3
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "1976-04-13 22:44",
-      "content": "sdfffs",
-      "id": 4
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2001-06-28 03:10",
-      "content": "ffff",
-      "id": 5
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
       "published_at": "1977-10-01 21:58",
       "content": "xixi\n",
       "id": 6
@@ -147,6 +126,13 @@
       "published_at": "1990-11-13 08:45",
       "content": "fff",
       "id": 7
+    },
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "published_at": "1982-05-01 03:14",
+      "content": "ggfg",
+      "id": 8
     }
   ],
   "sessions": [
@@ -215,6 +201,28 @@
         "roleId": 0
       },
       "id": 6
+    },
+    {
+      "hash": "0.50619590562255922794321350011159665882587432861328",
+      "user": {
+        "id": "001",
+        "login": "anton",
+        "password": "qwerty123",
+        "registeredAt": "2050-09-22",
+        "roleId": 0
+      },
+      "id": 7
+    },
+    {
+      "hash": "0.17525537194012208441762368238414637744426727294922",
+      "user": {
+        "id": "001",
+        "login": "anton",
+        "password": "qwerty123",
+        "registeredAt": "2050-09-22",
+        "roleId": 0
+      },
+      "id": 8
     }
   ]
 }
