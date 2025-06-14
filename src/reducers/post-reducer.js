@@ -1,4 +1,4 @@
-import { ACTION_TYPE } from "../actions";
+import { ACTION_TYPE } from '../actions';
 
 const initialPostState = {
 	id: '',
@@ -6,7 +6,7 @@ const initialPostState = {
 	imageUrl: '',
 	content: '',
 	publishedAt: '',
-	comments: []
+	comments: [],
 };
 
 export const postReducer = (state = initialPostState, action) => {
@@ -18,6 +18,8 @@ export const postReducer = (state = initialPostState, action) => {
 				...state,
 				...payload,
 			};
+		case ACTION_TYPE.RESET_POST_DATA:
+			return initialPostState;
 		default:
 			return state;
 	}
