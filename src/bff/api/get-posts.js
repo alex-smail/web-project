@@ -25,8 +25,8 @@ import { transformPost } from '../transformers';
 // };
 
 
-export const getPosts = async (page, limit) => {
-	const response = await fetch(`http://localhost:3001/posts?_page=${page}&_limit=${limit}`);
+export const getPosts = async (searchPharse, page, limit) => {
+	const response = await fetch(`http://localhost:3001/posts?title_like=${searchPharse}&_page=${page}&_limit=${limit}`);
 	const json = await response.json();
 	const link = response.headers.get('Link');
 
