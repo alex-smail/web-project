@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useMatch, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Comments, PostContent, PostForm } from './components';
@@ -7,12 +7,16 @@ import { useServerRequest } from '../../hooks';
 import styled from 'styled-components';
 import { loadPostAsync, RESET_POST_DATA } from '../../actions';
 import { selectPost } from '../../selectors';
+import { Error, PrivateContent } from '../../components';
+import { ROLE } from '../../constants';
 
 const PostContainer = ({ className }) => {
+	const [error, setError] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
 	const dispatch = useDispatch();
 	const params = useParams();
-	const isEditing = useMatch('/post/:postId/edit');
-	const isCreating = useMatch('/post');
+	const isEditing = !!useMatch('/post/:postId/edit');
+	const isCreating = !!useMatch('/post');
 	const requestServer = useServerRequest();
 	const post = useSelector(selectPost);
 
@@ -21,25 +25,36 @@ const PostContainer = ({ className }) => {
 	}, [dispatch, isCreating]);
 
 	useEffect(() => {
-		if (isCreating) return; // если создание поста, то дальше ничего не длеаем
+		if (isCreating) {
+			setIsLoading(false);
+			return;
+		} // если создание поста, то дальше ничего не длеаем
 
-		dispatch(loadPostAsync(requestServer, params.postId));
+		dispatch(loadPostAsync(requestServer, params.postId)).then(
+			(postData) => {
+				setError(postData.error);
+				setIsLoading(false);
+			}
+		);
 	}, [dispatch, requestServer, params.postId, isCreating]);
 
-	if (!post) return <div>Загрузка...</div>;
+	if (isLoading) return null;
 
-	return (
-		<div className={className}>
-			{isCreating || isEditing ? (
-				<PostForm post={post} />
-			) : (
-				<>
-					<PostContent post={post} />
-					<Comments comments={post.comments} postId={post.id} />
-				</>
-			)}
-		</div>
-	);
+	const SpecificPostPage =
+		isCreating || isEditing ? (
+			<PrivateContent access={[ROLE.ADMIN]} serverError={error}>
+				<div className={className}>
+					<PostForm post={post} />
+				</div>
+			</PrivateContent>
+		) : (
+			<div className={className}>
+				<PostContent post={post} />
+				<Comments comments={post.comments} postId={post.id} />
+			</div>
+		);
+
+	return error ? <Error error={error} /> : SpecificPostPage;
 };
 
 export const Post = styled(PostContainer)`
