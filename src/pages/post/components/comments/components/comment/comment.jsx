@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon } from '../../../../../../components';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
 	CLOSE_MODAL,
@@ -9,7 +10,6 @@ import {
 } from '../../../../../../actions';
 import { useServerRequest } from '../../../../../../hooks';
 import { selectUserRole } from '../../../../../../selectors';
-import { checkAccess } from '../../../../../../utils/chek-access';
 import { ROLE } from '../../../../../../constants';
 
 const CommentContainer = ({
@@ -102,3 +102,11 @@ export const Comment = styled(CommentContainer)`
 		display: flex;
 	}
 }`;
+
+Comment.propTypes = {
+	id: PropTypes.number.isRequired,
+	author: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+	postId: PropTypes.string.isRequired,
+};

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const TableRowContainer = ({ className, children }) => (
@@ -27,3 +28,7 @@ export const TableRow = styled(TableRowContainer)`
 		width: auto;
 	}
 `;
+
+TableRow.propTypes = {
+	children: PropTypes.node.isRequired,
+};

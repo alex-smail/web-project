@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon } from '../../../../components';
 import styled from 'styled-components';
@@ -84,3 +85,9 @@ export const SpecialPanel = styled(specialPanelContainer)`
 		top: -4px;
 	}
 `;
+
+SpecialPanel.propTypes = {
+	id: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+	editButton: PropTypes.node.isRequired,
+}
